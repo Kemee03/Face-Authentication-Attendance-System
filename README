@@ -1,0 +1,108 @@
+😊 Smile for Attendance 👀
+Face Authentication Based Attendance System
+
+A real-time face authentication attendance system built using Python, OpenCV, and Streamlit.
+The project allows students to register their face, punch in, and punch out using a live camera feed, with attendance automatically logged in a CSV file.
+
+This project was designed with a focus on practical usability, clean UI, and real-world constraints such as lighting variations and state handling.
+
+📌 Features
+
+📸 Face registration using live camera
+
+🧠 Face recognition using LBPH algorithm
+
+🕒 Punch In / Punch Out attendance system
+
+👥 Multiple student support
+
+📄 Attendance stored in CSV format
+
+🎨 Streamlit-based aesthetic and interactive UI
+
+🔁 Real-time updates without restarting the app
+
+⚠️ Basic spoof prevention via live camera input
+
+🛠️ Tech Stack
+Category	Tools / Libraries
+Language	Python
+Computer Vision	OpenCV
+Face Recognition	LBPH (Local Binary Pattern Histogram)
+Frontend	Streamlit
+Data Handling	Pandas, CSV
+UI Styling	HTML + CSS (inside Streamlit)
+
+📁 Project Structure
+Face-Authentication-Attendance-System/
+│
+├── app.py                  # Streamlit UI
+├── face_registration.py    # Face dataset creation
+├── face_recognition.py     # Recognition + attendance logic
+├── attendance.csv          # Attendance records
+├── dataset/                # Face images (ignored in GitHub)
+├── requirements.txt
+├── README.md
+└── .gitignore
+
+▶️ How the System Works
+1️⃣ Face Registration
+
+User enters UID and Name
+
+Camera captures multiple face samples
+
+Images are stored in a unique folder:
+
+dataset/UID_Name/
+
+2️⃣ Face Recognition
+
+LBPH model is trained on all registered faces
+
+Live camera feed is compared against trained data
+
+Recognized faces are matched with UID & Name
+
+3️⃣ Attendance Marking
+
+Punch In → records time in PunchIn
+
+Punch Out → updates PunchOut
+
+Attendance is stored in a structured CSV file
+
+🧪 Sample Attendance Format
+S.No	UID	Name	Date	PunchIn	PunchOut
+1	22BCS101	Kemee	2026-01-29	01:25:46	---
+2	22BCS105	Shashi Tharoor	2026-01-29	02:10:12	03:05:30
+🧠 Key Implementation Snippets
+Face Detection (OpenCV)
+faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
+Face Recognition (LBPH)
+label, confidence = recognizer.predict(face_img)
+if confidence < 80:
+    uid, name = label_map[label]
+
+Attendance Logging
+rows.append([serial_no, uid, name, today, punch_in_time, ""])
+
+🖥️ Running the Project
+1️⃣ Install dependencies
+pip install -r requirements.txt
+
+2️⃣ Start the Streamlit app
+python -m streamlit run app.py
+
+🔮 Future Enhancements
+
+Eye-blink / liveness detection
+
+Database-backed storage (MySQL / Firebase)
+
+Admin dashboard
+
+Export reports (PDF / Excel)
+
+Mobile-friendly interface
