@@ -39,6 +39,7 @@ This project focuses on **practical usability**, **clean UI**, and **real-world 
 Face-Authentication-Attendance-System/
 │
 ├── app.py
+├── camera_check.py
 ├── face_detection.py
 ├── face_registration.py
 ├── face_recognition.py
